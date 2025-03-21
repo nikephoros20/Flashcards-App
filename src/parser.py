@@ -74,9 +74,9 @@ def process_def_list(definition_list):
         ]
     ):
         unwanted.extract()
-    #definition list - raw html
+    # definition list - raw html
     enumerate_list(definition_list)
-    #definition list - ordered list in raw html
+    # definition list - ordered list in raw html
     remaining_text = definition_list.get_text()
     lines = remaining_text.splitlines()
     merged_strings = merge_strings(lines)

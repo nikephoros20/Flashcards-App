@@ -7,6 +7,7 @@ from tkinter import font
 from tkinter import simpledialog
 from tkinter import scrolledtext
 
+
 #####################################################################################################################################################
 # AUXILIARY FUNCTIONS
 #####################################################################################################################################################
@@ -16,6 +17,7 @@ def destroy_current_frame():
         current_frame.destroy()
         current_frame = None
 
+
 def is_dict_empty():
     cursor.execute("SELECT COUNT(*) FROM dictionary;")
     row_count = cursor.fetchone()[0]
@@ -23,6 +25,7 @@ def is_dict_empty():
         return True
     else:
         return False
+
 
 #####################################################################################################################################################
 # ADDING AND DELETING
@@ -177,7 +180,7 @@ def editing_buttons(edit_frame, the_word, edit_entry, list_settings, buttons_con
         ),
     )
     button2.pack(side="left", padx=5)
-    if buttons_config !=1:
+    if buttons_config != 1:
         button3 = tk.Button(
             button_frame,
             text="Обнулить прогресс",
@@ -237,7 +240,6 @@ def word_list(
             "Ошибка!", "Словарь пуст. Добавьте слова, чтобы начать их изучение"
         )
         main_menu()
-    
 
 
 def switch_order(sort_arg, prev_sort_arg, order_arg, sort_clicked):
@@ -296,11 +298,7 @@ def lower_navigation(word_list_frame, number_of_rows, sort_arg, max_page, page):
     lower_frame = tk.Frame(word_list_frame, bg="linen")
     lower_frame.pack(side="bottom", pady=(0, 5))
 
-    back_button = tk.Button(
-        word_list_frame,
-        text="...",
-        command=lambda: (main_menu())
-    )
+    back_button = tk.Button(word_list_frame, text="...", command=lambda: (main_menu()))
     back_button.place(x=2, y=412)
 
     if number_of_rows > 10:
@@ -390,13 +388,14 @@ def input_validation(input_value, max_page, current_page):
 # LEARN PAGE
 #####################################################################################################################################################
 
+
 def learn(the_word=None, reverse_side=0, advance=0):
     if is_dict_empty() == True:
         messagebox.showerror(
             "Ошибка!", "Словарь пуст. Добавьте слова, чтобы начать их изучение"
         )
-        return 
-         
+        return
+
     learning_stages = {
         1: {"sql": None, "rus": "<1 мин"},
         2: {"sql": "+5 minute", "rus": "<5 мин"},
@@ -536,7 +535,7 @@ def stage_buttons(learn_frame, dict_tuple, reverse_side, learning_stages, advanc
                     advance=advance,
                 ),
             )
-            button2.pack(side="left", padx=5,pady=20 )
+            button2.pack(side="left", padx=5, pady=20)
 
         button3 = tk.Button(
             learn_button_frame,
